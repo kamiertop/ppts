@@ -7,6 +7,7 @@ const decksDir = join(root, 'decks')
 const distDir = join(root, 'dist')
 const repositoryName = process.env.REPOSITORY_NAME || process.env.GITHUB_REPOSITORY?.split('/')[1] || basename(root)
 const siteBase = normalizeBase(process.env.SITE_BASE || `/${repositoryName}/`)
+const customDomain = process.env.CUSTOM_DOMAIN?.trim()
 
 const decks = readdirSync(decksDir, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
@@ -39,6 +40,10 @@ for (const deck of decks) {
 }
 
 writeFileSync(join(distDir, 'index.html'), renderIndex(decks, siteBase))
+
+if (customDomain) {
+  writeFileSync(join(distDir, 'CNAME'), `${customDomain}\n`)
+}
 
 function renderIndex(deckNames, base) {
   const items = deckNames.map((name) => {

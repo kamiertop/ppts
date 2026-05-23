@@ -8,7 +8,14 @@
 decks/evsod/
 ```
 
-部署后的访问路径一般是：
+当前部署使用独立自定义域名：
+
+```text
+https://slides.kamier.top/
+https://slides.kamier.top/evsod/
+```
+
+如果不配置独立自定义域名，GitHub Pages 的默认访问路径一般是：
 
 ```text
 https://你的用户名.github.io/仓库名/
@@ -146,6 +153,32 @@ REPOSITORY_NAME=你的仓库名 pnpm run build
 
 GitHub Actions 里不需要手动指定，脚本会自动从 GitHub 环境变量读取仓库名。
 
+当前线上部署使用 `slides.kamier.top` 作为独立自定义域名，所以 GitHub Actions 会设置：
+
+```yaml
+SITE_BASE: /
+CUSTOM_DOMAIN: slides.kamier.top
+```
+
+这会让线上构建结果使用根路径：
+
+```text
+/
+/evsod/
+```
+
+如果要在本地模拟自定义域名构建，可以执行：
+
+```bash
+pnpm run build:custom-domain
+```
+
+这会额外生成：
+
+```text
+dist/CNAME
+```
+
 ## 添加一个新的 PPT
 
 创建新目录：
@@ -238,6 +271,32 @@ HttpError: Not Found
 
 这表示 GitHub Pages 站点还没有启用，进入上面的设置页面把 Source 改成 `GitHub Actions` 后重新运行 workflow 即可。
 
+workflow 顶部设置了：
+
+```yaml
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  SITE_BASE: /
+  CUSTOM_DOMAIN: slides.kamier.top
+```
+
+`FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` 是为了让 GitHub Actions 里的 JavaScript action 使用 Node.js 24 runtime，避免 GitHub 对 Node.js 20 action runtime 的弃用警告。项目自身构建使用的 Node 版本仍然由 `actions/setup-node` 的 `node-version` 控制。
+
+`SITE_BASE=/` 表示这个仓库使用独立自定义域名，从域名根路径访问。`CUSTOM_DOMAIN=slides.kamier.top` 会在构建产物里生成 `CNAME` 文件。
+
+workflow 中的 action 使用当前可用的最新主版本，例如：
+
+```yaml
+actions/checkout@v6
+actions/setup-node@v6
+pnpm/action-setup@v6
+actions/configure-pages@v6
+actions/upload-pages-artifact@v5
+actions/deploy-pages@v4
+```
+
+这里不写 `@latest`，因为很多 GitHub Action 并不提供稳定的 `latest` tag。使用最新主版本 tag 可以继续接收该主版本下的补丁更新，同时避免引用不存在的 tag。
+
 然后推送代码：
 
 ```bash
@@ -278,6 +337,7 @@ mkdir -p decks/demo scripts .github/workflows
   "scripts": {
     "build": "node scripts/build-all.mjs",
     "build:local": "REPOSITORY_NAME=ppts node scripts/build-all.mjs",
+    "build:custom-domain": "SITE_BASE=/ CUSTOM_DOMAIN=slides.kamier.top node scripts/build-all.mjs",
     "dev:demo": "pnpm --dir decks/demo dev"
   },
   "devDependencies": {
@@ -357,6 +417,8 @@ Hello Slidev
 2. 对每个 deck 执行 `slidev build --base /仓库名/deck名/ --out dist/deck名`
 3. 生成 `dist/index.html`
 
+如果使用独立自定义域名，则把 `SITE_BASE` 设置为 `/`，构建路径会变成 `/deck名/`。
+
 当前仓库已经有完整实现，可以直接复用：
 
 ```text
@@ -380,10 +442,16 @@ pnpm run build:local
 /仓库名/deck名/
 ```
 
-如果你使用自定义域名，并且希望从根路径访问，可以在构建时设置：
+如果你使用独立自定义域名，并且希望从根路径访问，可以在构建时设置：
 
 ```bash
 SITE_BASE=/ pnpm run build
+```
+
+如果还想让构建产物包含 GitHub Pages 需要的 `CNAME` 文件，可以设置：
+
+```bash
+SITE_BASE=/ CUSTOM_DOMAIN=slides.kamier.top pnpm run build
 ```
 
 如果新增 deck 后首页没有出现它，检查这个文件是否存在：

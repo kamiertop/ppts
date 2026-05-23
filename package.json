@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node scripts/build-all.mjs",
     "build:local": "REPOSITORY_NAME=ppts node scripts/build-all.mjs",
+    "build:custom-domain": "SITE_BASE=/ CUSTOM_DOMAIN=slides.kamier.top node scripts/build-all.mjs",
     "dev:evsod": "pnpm --dir decks/evsod dev"
   },
   "devDependencies": {
