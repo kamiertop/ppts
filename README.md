@@ -229,6 +229,15 @@ pnpm run build
 Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
 ```
 
+如果没有做这一步，Actions 里的 `Configure GitHub Pages` 可能会报：
+
+```text
+Get Pages site failed
+HttpError: Not Found
+```
+
+这表示 GitHub Pages 站点还没有启用，进入上面的设置页面把 Source 改成 `GitHub Actions` 后重新运行 workflow 即可。
+
 然后推送代码：
 
 ```bash
