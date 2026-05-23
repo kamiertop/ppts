@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite-inspect
+.remote-assets
+components.d.ts
+.idea
+.vscode
+.agents
+.codex
+.env
+.env.local
+.env.*.local
+*.log
+*.lock

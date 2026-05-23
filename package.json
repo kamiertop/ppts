@@ -1,0 +1,17 @@
+{
+  "name": "ppts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-all.mjs",
+    "build:local": "REPOSITORY_NAME=ppts node scripts/build-all.mjs",
+    "dev:evsod": "pnpm --dir decks/evsod dev"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.15.2",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.5.33"
+  },
+  "packageManager": "pnpm@10.25.0"
+}
