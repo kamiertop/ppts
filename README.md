@@ -70,6 +70,14 @@ Node.js 22+
 pnpm 10+
 ```
 
+本仓库在 `package.json` 中通过 `packageManager` 固定 pnpm 版本：
+
+```json
+"packageManager": "pnpm@10.25.0"
+```
+
+GitHub Actions 会读取这个版本，因此不要在 `.github/workflows/pages.yml` 里再额外配置 pnpm 的 `version`，否则会出现多个 pnpm 版本声明冲突。
+
 如果本机没有 pnpm，可以先启用 Corepack：
 
 ```bash
