@@ -22,7 +22,6 @@ const remark = computed(() => {
 
 <template>
   <footer v-if="footerShown" class="hbu-footer">
-    <span class="hbu-spacer" />
     <span class="hbu-remark">{{ remark }}</span>
     <span class="hbu-pageno">{{ currentPage }} / {{ total }}</span>
   </footer>
@@ -33,7 +32,7 @@ const remark = computed(() => {
   position: fixed;
   left: 50px;
   right: 26px;
-  bottom: 14px;
+  bottom: 8px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -45,17 +44,13 @@ const remark = computed(() => {
   z-index: 40;
 }
 
-.hbu-spacer {
-  flex: 0 0 60px;
-}
-
 .hbu-remark {
   flex: 1;
   text-align: center;
 }
 
 .hbu-pageno {
-  flex: 0 0 60px;
+  flex-shrink: 0;
   text-align: right;
 }
 </style>

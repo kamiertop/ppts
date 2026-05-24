@@ -32,6 +32,9 @@ importers:
       '@slidev/types':
         specifier: ^52.15.2
         version: 52.15.2(@nuxt/kit@3.21.6)(@vue/compiler-sfc@3.5.34)(typescript@5.9.3)(vite@8.0.14(@types/node@22.19.19)(jiti@2.7.0)(yaml@2.9.0))
+      katex:
+        specifier: ^0.17.0
+        version: 0.17.0
     devDependencies:
       '@slidev/cli':
         specifier: ^52.15.2
@@ -1730,6 +1733,10 @@ packages:
 
   katex@0.16.47:
     resolution: {integrity: sha512-Eeo8Ys1doU1z+x8AZsPpQu+p/QcZBI5PeOo7QGQdy2x2m0MU/hYagBbGOmXwr5KVbEfVuWv9LpnQWeehogurjg==}
+    hasBin: true
+
+  katex@0.17.0:
+    resolution: {integrity: sha512-Vdw0ATsQ9V+LuegM/BTwQqV/6cTl5lbGcIrU+BCgLxyf6bo38ybOr372tuSIxir3CN720flu1meYR6XzNMwQnw==}
     hasBin: true
 
   khroma@2.1.0:
@@ -4724,6 +4731,10 @@ snapshots:
       setimmediate: 1.0.5
 
   katex@0.16.47:
+    dependencies:
+      commander: 8.3.0
+
+  katex@0.17.0:
     dependencies:
       commander: 8.3.0
 

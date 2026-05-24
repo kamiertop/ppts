@@ -346,23 +346,56 @@ theme: hbu
 ---
 ```
 
-### 常用布局
+### 全部布局
 
-HBU 主题目前提供这些常用布局：
+HBU 主题提供 12 种布局：
 
-```md
+#### `cover`（封面，默认第一页）
+
+```yaml
 ---
-layout: section
+title: "Paper Title"
+presenter: "Zhang San"
+affiliation: "Hebei University"
+date: "2026-05-24"
 ---
 ```
 
-章节标题加内容页。
+封面自动显示打字机标题。`title` 支持 YAML 多行断行：
 
-```md
+```yaml
+title: |-
+  Event-based Tiny Object Detection:
+  A Benchmark Dataset and Baseline
+```
+
+冒号处即断行位置。`presenter`、`affiliation`、`date` 均为可选。
+
+#### `section`
+
+```yaml
+---
+layout: section
+---
+# Chapter Title
+
+## Subtitle
+
+正文内容……
+```
+
+章节分隔页，标题带下划线。内容直接跟在标题后面。
+
+#### `default`
+
+不带 `layout` 时默认使用，标题在顶部、下划线、正文在下。
+
+#### `two-cols`
+
+```yaml
 ---
 layout: two-cols
 ---
-
 # Title
 
 左侧内容
@@ -372,13 +405,14 @@ layout: two-cols
 右侧内容
 ```
 
-左右两栏页。
+左右两栏，`::right::` 分隔。
 
-```md
+#### `two-rows`
+
+```yaml
 ---
 layout: two-rows
 ---
-
 # Title
 
 上方内容
@@ -388,33 +422,189 @@ layout: two-rows
 下方内容
 ```
 
-上下布局页。
+上下布局，`::bottom::` 分隔。下方区域有浅蓝背景。
 
-```md
+#### `image-right` / `image-left`
+
+```yaml
 ---
 layout: image-right
 image: /path/to/image.png
 backgroundSize: contain
 ---
+# Title
+
+左侧文字说明
 ```
 
-右图左文页。`image-left` 是左图右文页。
+文字 + 图片并排。`image-left` 反之。
 
-```md
+#### `statement`
+
+```yaml
 ---
 layout: statement
 ---
+# 核心结论
+
+一句话支撑说明
 ```
 
-核心观点页。
+居中大字声明，标题下方有装饰线。
 
-```md
+#### `fact`
+
+```yaml
 ---
 layout: fact
 ---
+# 41.6
+## mAP on Benchmark
+
+一句话说明
 ```
 
-数字或结果强调页。
+大数字强调页，适合展示关键指标。
+
+#### `intro`
+
+```yaml
+---
+layout: intro
+---
+# Title
+
+Subtitle or abstract
+```
+
+居中介绍页。
+
+#### `team`
+
+```yaml
+---
+layout: team
+---
+# Contributors
+
+<div class="hbu-team-grid">
+  <div class="hbu-team-member">
+    <strong>Name</strong>
+    <span>Role</span>
+  </div>
+</div>
+```
+
+团队成员 / 贡献者列表。
+
+#### `refs`
+
+```yaml
+---
+layout: refs
+---
+# References
+
+1. Author, "Title," *Venue*, Year.
+```
+
+参考文献页，小字号紧凑排版。
+
+#### `end`
+
+```yaml
+---
+layout: end
+---
+# Thanks
+
+Questions & Discussion
+```
+
+结尾致谢页。
+
+### frontmatter 字段
+
+| 字段 | 说明 | 适用 |
+|---|---|---|
+| `title` | 论文标题（封面打字机） | cover |
+| `presenter` | 汇报人姓名 | cover |
+| `affiliation` | 单位 | cover |
+| `date` | 日期（左下角） | cover |
+| `remark` | 页脚居中备注 | 任意页 |
+| `section` | 已移除，不再使用 | — |
+
+### 内联组件
+
+`<Remark text="..." />` — 在正文中直接写，效果等同 frontmatter `remark`，优先级更高。
+
+### 自定义 CSS 类
+
+**提示框：**
+
+```html
+<div class="callout">默认（蓝色）提示</div>
+<div class="callout-warn">警告（黄色）提示</div>
+<div class="callout-good">正面（绿色）提示</div>
+```
+
+**关键结论：**
+
+```html
+<span class="key-point">行内高亮，带下划线</span>
+
+<div class="key-point-block">
+  块级高亮，带蓝色左边框
+</div>
+```
+
+**表格增强：**
+
+```html
+<!-- 高亮行 -->
+<tr class="hl-row">
+
+<!-- 最佳结果单元格 -->
+<td class="best">41.6</td>
+```
+
+表格自动斑马纹（偶数行浅灰背景）。
+
+**图片标题：**
+
+```html
+<figure>
+  <img src="/fig.png" />
+  <figcaption>Fig. 1: Architecture overview.</figcaption>
+</figure>
+```
+
+**上下标：**
+
+```md
+E = mc<sup>2</sup>
+H<sub>2</sub>O
+```
+
+### 目录
+
+```md
+---
+layout: section
+---
+# Outline
+
+<Outline maxDepth="1" />
+```
+
+`maxDepth` 控制层级深度，`1` 表示只显示一级标题。
+
+### 全局特性
+
+- **进度条**：页面顶部的蓝色细线，自动反映汇报进度
+- **页码**：右下角 `当前页 / 总页数`，封面和结尾页不显示
+- **LOGO**：仅在封面右上角显示
+- **打字机效果**：封面标题逐字出现，`speed` 和 `startDelay` 在 `TypewriterTitle.vue` 中可调
 
 ## GitHub Pages 部署
 
