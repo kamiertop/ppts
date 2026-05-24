@@ -1,0 +1,31 @@
+{
+  "name": "slidev-theme-hbu",
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "^52.15.2"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.15.2"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "fonts": {
+        "sans": "Maple Mono NF CN",
+        "mono": "Maple Mono NF CN"
+      }
+    }
+  }
+}

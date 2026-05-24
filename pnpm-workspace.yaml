@@ -1,4 +1,5 @@
 packages:
   - "decks/*"
+  - "hbu"
 
 shamefullyHoist: true

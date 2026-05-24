@@ -21,7 +21,21 @@ importers:
         specifier: ^3.5.33
         version: 3.5.34(typescript@5.9.3)
 
-  decks/evsod: {}
+  decks/evsod:
+    dependencies:
+      slidev-theme-hbu:
+        specifier: workspace:*
+        version: link:../../hbu
+
+  hbu:
+    dependencies:
+      '@slidev/types':
+        specifier: ^52.15.2
+        version: 52.15.2(@nuxt/kit@3.21.6)(@vue/compiler-sfc@3.5.34)(typescript@5.9.3)(vite@8.0.14(@types/node@22.19.19)(jiti@2.7.0)(yaml@2.9.0))
+    devDependencies:
+      '@slidev/cli':
+        specifier: ^52.15.2
+        version: 52.15.2(@nuxt/kit@3.21.6)(@types/markdown-it@14.1.2)(@types/node@22.19.19)(@vue/compiler-sfc@3.5.34)(markdown-it@14.1.1)(postcss@8.5.15)
 
 packages:
 

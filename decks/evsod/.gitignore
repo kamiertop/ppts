@@ -5,3 +5,12 @@ dist
 .vite-inspect
 .remote-assets
 components.d.ts
+.vscode
+.idea
+.agents
+.codex
+.env
+.env.local
+.env.*.local
+*.log
+*.lock

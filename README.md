@@ -60,6 +60,7 @@ dist/index.html
 │       ├── components/           # 可选：Vue 组件
 │       ├── pages/                # 可选：拆分页面
 │       └── snippets/             # 可选：代码片段
+├── hbu/                          # 本仓库维护的 Slidev 主题
 ├── scripts/build-all.mjs         # 构建所有 PPT
 ├── package.json                  # 根项目脚本和依赖
 ├── pnpm-workspace.yaml           # pnpm workspace 配置
@@ -198,6 +199,9 @@ mkdir -p decks/my-talk
     "dev": "slidev --open",
     "build": "slidev build",
     "export": "slidev export"
+  },
+  "dependencies": {
+    "slidev-theme-hbu": "workspace:*"
   }
 }
 ```
@@ -206,7 +210,7 @@ mkdir -p decks/my-talk
 
 ```md
 ---
-theme: seriph
+theme: hbu
 title: My Talk
 ---
 
@@ -238,6 +242,179 @@ pnpm run build:local
 ```text
 https://你的用户名.github.io/仓库名/my-talk/
 ```
+
+## 使用 HBU 主题
+
+本仓库自带一个本地 Slidev 主题：
+
+```text
+hbu/
+```
+
+主题包名是：
+
+```text
+slidev-theme-hbu
+```
+
+在 `slides.md` 中可以简写为：
+
+```md
+---
+theme: hbu
+---
+```
+
+### 在本仓库中新建 PPT
+
+如果新 PPT 放在 `decks/` 下，例如：
+
+```text
+decks/my-talk/
+```
+
+只需要在这个 deck 的 `package.json` 中依赖本地主题：
+
+```json
+{
+  "name": "my-talk",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "slidev-theme-hbu": "workspace:*"
+  }
+}
+```
+
+然后在 `slides.md` 顶部写：
+
+```md
+---
+theme: hbu
+title: My Talk
+---
+```
+
+在仓库根目录安装依赖：
+
+```bash
+pnpm install
+```
+
+预览：
+
+```bash
+pnpm --dir decks/my-talk dev
+```
+
+### 在新的同类仓库中复用
+
+如果你复制这个仓库结构到一个新项目，记得同时复制：
+
+```text
+hbu/
+```
+
+并让 `pnpm-workspace.yaml` 包含主题目录：
+
+```yaml
+packages:
+  - "decks/*"
+  - "hbu"
+
+shamefullyHoist: true
+```
+
+然后新 deck 按上一节添加：
+
+```json
+"dependencies": {
+  "slidev-theme-hbu": "workspace:*"
+}
+```
+
+`slides.md` 使用：
+
+```md
+---
+theme: hbu
+---
+```
+
+### 常用布局
+
+HBU 主题目前提供这些常用布局：
+
+```md
+---
+layout: section
+---
+```
+
+章节标题加内容页。
+
+```md
+---
+layout: two-cols
+---
+
+# Title
+
+左侧内容
+
+::right::
+
+右侧内容
+```
+
+左右两栏页。
+
+```md
+---
+layout: two-rows
+---
+
+# Title
+
+上方内容
+
+::bottom::
+
+下方内容
+```
+
+上下布局页。
+
+```md
+---
+layout: image-right
+image: /path/to/image.png
+backgroundSize: contain
+---
+```
+
+右图左文页。`image-left` 是左图右文页。
+
+```md
+---
+layout: statement
+---
+```
+
+核心观点页。
+
+```md
+---
+layout: fact
+---
+```
+
+数字或结果强调页。
 
 ## GitHub Pages 部署
 

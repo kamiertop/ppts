@@ -14,3 +14,4 @@ components.d.ts
 .env.*.local
 *.log
 *.lock
+.claude
