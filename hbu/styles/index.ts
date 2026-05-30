@@ -1,4 +1,7 @@
-// inherit from base layouts, remove it to get full customizations
 import '@slidev/client/styles/layouts-base.css'
+import './variables.css'
+import './base.css'
+import './layouts.css'
+import './special.css'
+import './components.css'
 import './fonts.css'
-import './layout.css'

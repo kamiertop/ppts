@@ -1,0 +1,48 @@
+/* ============ callout 提示框 ============ */
+.callout {
+    margin: 24px 0;
+    padding: 18px 24px;
+    border-radius: 6px;
+    border-left: 4px solid var(--hbu-blue);
+    background: #f5f9ff;
+}
+
+.callout p {
+    margin: 0;
+    color: var(--hbu-text);
+}
+
+.callout-warn {
+    border-left-color: #d97706;
+    background: #fffbeb;
+}
+
+.callout-good {
+    border-left-color: #059669;
+    background: #ecfdf5;
+}
+
+/* ============ key-point 关键结论 ============ */
+.key-point {
+    display: inline;
+    padding: 2px 0;
+    color: var(--hbu-blue-dark);
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 55%, #c4dcf7 55%);
+}
+
+.key-point-block {
+    display: block;
+    margin: 20px 0;
+    padding: 16px 22px;
+    color: var(--hbu-blue-dark);
+    font-weight: 650;
+    background: linear-gradient(135deg, #eef4fb, #f5f9ff);
+    border-left: 4px solid var(--hbu-blue);
+    border-radius: 0 6px 6px 0;
+}
+
+.key-point-block p {
+    margin: 0;
+    color: inherit;
+}

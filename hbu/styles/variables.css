@@ -1,0 +1,30 @@
+:root {
+    /* 主色调 */
+    --hbu-blue: #1e5aa8;
+    --hbu-blue-dark: #123a70;
+    --hbu-text: #172033;
+    --hbu-muted: #64748b;
+    --hbu-line: #dbe3ef;
+    --hbu-bg: #ffffff;
+
+    /* 内容区 padding */
+    --hbu-content-padding-top: 90px;
+    --hbu-content-padding-right: 88px;
+    --hbu-content-padding-bottom: 72px;
+    --hbu-content-padding-left: 50px;
+    --hbu-title-padding-top: 20px;
+    --hbu-title-padding-right: 88px;
+    --hbu-title-padding-left: 30px;
+    --hbu-title-gap: 34px;
+
+    /* 正文排版：改字号/行高统一在这里 */
+    --hbu-font-size-body: 21px;
+    --hbu-line-height-body: 1.55;
+    --hbu-font-size-h1: 25px;
+    --hbu-line-height-h1: 1.16;
+    --hbu-font-size-h2: 24px;
+    --hbu-line-height-h2: 1.25;
+
+    --slidev-theme-primary: var(--hbu-blue);
+    --slidev-slide-container-background: #ffffff;
+}

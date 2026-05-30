@@ -1,0 +1,213 @@
+/* 全局HTML背景 / Slidev容器 / 幻灯片页面 */
+html,
+body,
+#app,
+#page-root,
+#slide-container {
+    background: #ffffff !important;
+}
+
+#slide-content {
+    width: calc(100vw / var(--slidev-slide-scale)) !important;
+    height: calc((var(--vh, 1vh) * 100) / var(--slidev-slide-scale)) !important;
+}
+
+.slidev-page,
+.slidev-layout {
+    background: var(--hbu-bg);
+    color: var(--hbu-text);
+}
+
+.slidev-layout {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 72px 88px 72px 72px;
+}
+
+/* 全局排版元素 */
+.slidev-layout h1 {
+    margin: 0 96px 28px 0;
+    color: var(--hbu-blue-dark);
+    font-size: var(--hbu-font-size-h1);
+    font-weight: 750;
+    line-height: var(--hbu-line-height-h1);
+}
+
+.slidev-layout h2 {
+    color: var(--hbu-blue);
+    font-size: var(--hbu-font-size-h2);
+    font-weight: 700;
+    line-height: var(--hbu-line-height-h2);
+}
+
+.slidev-layout p,
+.slidev-layout li {
+    color: var(--hbu-text);
+    font-size: var(--hbu-font-size-body);
+    line-height: var(--hbu-line-height-body);
+}
+
+.slidev-layout strong {
+    color: #b22222;
+}
+
+.slidev-layout sup {
+    font-size: 0.7em;
+    color: var(--hbu-muted);
+    vertical-align: super;
+}
+
+.slidev-layout sub {
+    font-size: 0.7em;
+    color: var(--hbu-muted);
+    vertical-align: sub;
+}
+
+.slidev-layout blockquote {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: var(--hbu-blue-dark);
+    background: #f5f9ff;
+    border-left: 5px solid var(--hbu-blue);
+}
+
+.slidev-layout blockquote p {
+    margin: 0;
+    color: inherit;
+}
+
+.slidev-layout table {
+    width: 100%;
+    margin-top: 24px;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.slidev-layout th {
+    color: var(--hbu-blue-dark);
+    font-weight: 700;
+    background: #f4f8fd;
+}
+
+.slidev-layout th,
+.slidev-layout td {
+    padding: 10px 12px;
+    border: 1px solid var(--hbu-line);
+}
+
+.slidev-layout tbody tr:nth-child(even) {
+    background: #fafbfd;
+}
+
+.slidev-layout .hl-row,
+.slidev-layout tbody tr.hl-row {
+    background: #eef4fb;
+    font-weight: 600;
+    color: var(--hbu-blue-dark);
+}
+
+.slidev-layout td.best {
+    background: #ecfdf5;
+    color: #059669;
+    font-weight: 700;
+}
+
+.slidev-layout img {
+    display: block;
+    max-width: 100%;
+    max-height: 440px;
+    margin: 12px auto;
+    object-fit: contain;
+}
+
+.slidev-layout figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.slidev-layout figure img {
+    max-height: 380px;
+}
+
+.slidev-layout figcaption {
+    margin-top: 10px;
+    color: var(--hbu-muted);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.slidev-layout pre {
+    padding: 16px 20px;
+    background: #f8f9fb;
+    border: 1px solid var(--hbu-line);
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.55;
+    overflow-x: auto;
+}
+
+.slidev-layout pre code {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+}
+
+.slidev-layout .line-numbers {
+    color: var(--hbu-muted);
+    font-size: 13px;
+}
+
+.slidev-layout :not(pre) > code {
+    padding: 2px 6px;
+    color: var(--hbu-blue-dark);
+    background: #f2f6fc;
+    border: 1px solid var(--hbu-line);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.slidev-layout a {
+    color: var(--hbu-blue);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hbu-blue);
+    padding-bottom: 1px;
+    transition: border-width 0.15s;
+}
+
+.slidev-layout a:hover {
+    border-bottom-width: 5px;
+}
+
+.slidev-layout kbd {
+    display: inline-block;
+    padding: 2px 7px;
+    color: var(--hbu-text);
+    background: #f4f5f7;
+    border: 1px solid #c8cdd4;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+.slidev-layout hr {
+    margin: 32px 0;
+    border: 0;
+    height: 1px;
+    background: var(--hbu-line);
+}
+
+.slidev-layout ul {
+    padding-left: 1.2em;
+}
+
+.slidev-layout ul > li::marker {
+    color: var(--hbu-blue);
+}
+
+.slidev-layout ol > li::marker {
+    color: var(--hbu-blue-dark);
+    font-weight: 700;
+}

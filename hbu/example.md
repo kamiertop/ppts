@@ -24,7 +24,7 @@ layout: section
 
 ## Motivation
 
-- Event-based tiny object detection is **difficult to compare** across datasets.
+- Event-based tiny object detection is **difficult to compare** across datasets, see [EVSOD Benchmark](https://github.com).
 - A reusable theme should support title, evidence, and result pages.
 - Section pages should carry content directly, not only divide chapters.
 
@@ -74,7 +74,7 @@ layout: two-cols
 | Head      |  0.6G |   1.2M |
 
 ---
-layout: two-rows
+layout: section
 ---
 
 # Benchmark Results
@@ -88,8 +88,6 @@ layout: two-rows
 | **Ours** | **41.6** |       **26.8** |       **49.2** |  64 |
 
 <span class="key-point">Our method achieves +6.8 mAP over the strongest baseline.</span>
-
-::bottom::
 
 ## Ablation Study
 

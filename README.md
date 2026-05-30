@@ -407,23 +407,6 @@ layout: two-cols
 
 左右两栏，`::right::` 分隔。
 
-#### `two-rows`
-
-```yaml
----
-layout: two-rows
----
-# Title
-
-上方内容
-
-::bottom::
-
-下方内容
-```
-
-上下布局，`::bottom::` 分隔。下方区域有浅蓝背景。
-
 #### `image-right` / `image-left`
 
 ```yaml
